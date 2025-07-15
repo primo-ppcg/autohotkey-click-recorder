@@ -9,6 +9,9 @@ Mouse click recorder and turbo click script for AutoHotkey
   <dt>Mouse Back -or- Ctrl + 2</dt>
   <dd>Start/Stop macro playback</dd>
 
+  <dt>NumLock</dt>
+  <dd>Toggle turbo click on/off</dd>
+
   <dt>Hold Mouse Left</dt>
   <dd>Click continuously</dd>
 

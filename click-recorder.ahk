@@ -5,6 +5,7 @@
 
 toggleRecord := false
 togglePlayback := false
+toggleTurboClick := GetKeyState("NumLock", "T")
 CoordMode Mouse, Screen
 
 Gui recToolTip: New, +AlwaysOnTop +ToolWindow -Caption, recToolTip
@@ -88,13 +89,20 @@ XButton1::
 #MaxThreadsPerHotkey 1
 
 /**
+  * Toggle turbo click
+  */
+~NumLock::
+  toggleTurboClick := GetKeyState("NumLock", "T")
+  return
+
+/**
   * Click continuously while left mouse is held, 20/s
   */
 ~$LButton::
   Gosub recordClick
   ; delay first repeated click slightly longer to avoid unintentional double click
   KeyWait LButton, T0.15
-  while(ErrorLevel && GetKeyState("LButton", "P")) {
+  while(toggleTurboClick && ErrorLevel && GetKeyState("LButton", "P")) {
     Click
     Gosub recordClick
     KeyWait LButton, T0.05
